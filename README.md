@@ -28,10 +28,7 @@ The analysis is based on the **Olist Brazilian E-Commerce public dataset**, whic
 * `olist_order_items_dataset.csv`
 * `olist_order_payments_dataset.csv`
 
-**Key Features Processed:**
-* `Recency`: days since last purchase
-* `Frequency`: number of orders
-* `Monetary`: total value paid
+---
 
 ## Data Cleaning & Preparation
 
