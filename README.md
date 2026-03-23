@@ -76,7 +76,7 @@ The project identified four distinct customer segments based on their RFM patter
 
 | Cluster | Recency ↑ | Frequency ↑ | Monetary ↑ | Profile |
 |---------|-----------|-------------|------------|---------|
-| 0       | Low       | Very Low    | Very High   | **Recent Big Spenders, Infrequent**  |
+| 0       | Low       | Very Low    | Very High   | **Recent Big Spenders, Infrequent** |
 | 1       | Low       | Very High   | Very High   | **High-Value Frequent Champions** |
 | 2       | High      | Very Low    | Low         | **Long-Term Inactive / Lost Customers** |
 | 3       | Very Low  | Very Low    | Very Low    | **New/Recent Low Spenders** |
