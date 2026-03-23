@@ -13,7 +13,20 @@ This project segments customers from an e-commerce dataset based on purchasing b
 
 ## Dataset Summary
 
-The analysis is based on the **Olist Brazilian E-Commerce public dataset**, which contains transactional records.
+The analysis is based on the **Olist Brazilian E-Commerce public dataset**, which contains transactional records from a Brazilian marketplace.
+
+| Feature | Description |
+|---------|-------------|
+| Period | 2016 – 2018 |
+| Orders | ~100,000 |
+| Geography | Brazil |
+| Source | Kaggle (public) |
+
+**Data Sources Used:**
+* `olist_orders_dataset.csv`
+* `olist_customers_dataset.csv`
+* `olist_order_items_dataset.csv`
+* `olist_order_payments_dataset.csv`
 
 **Key Features Processed:**
 * `Recency`: days since last purchase
@@ -24,8 +37,10 @@ The analysis is based on the **Olist Brazilian E-Commerce public dataset**, whic
 
 The following key steps were performed to ensure data quality and readiness for analysis:
 
--   **Data Sources**: The project utilized `olist_orders_dataset.csv`, `olist_customers_dataset.csv`, `olist_order_items_dataset.csv`, and `olist_order_payments_dataset.csv` from the Olist Brazilian E-Commerce dataset.
--   **RFM Feature Engineering**: `Recency`, `Frequency`, and `Monetary` features were engineered and grouped by `customer_unique_id`.
+-   **RFM Feature Engineering**: Three behavioral features were engineered and grouped by `customer_unique_id`:
+    * `Recency`: days since last purchase
+    * `Frequency`: number of orders
+    * `Monetary`: total value paid
 -   **Preprocessing**:
     * Null values and duplicate records were removed.
     * Outliers were filtered (99th percentile, non-positive values).
@@ -36,18 +51,12 @@ The following key steps were performed to ensure data quality and readiness for 
 
 ## Exploratory Data Analysis
 
-### 1. **RFM Feature Engineering**
-- `Recency`: days since last purchase
-- `Frequency`: number of orders
-- `Monetary`: total value paid
-- Grouped by `customer_unique_id`
-
-### 2. **Clustering**
+### 1. **Clustering**
 - The K-Means algorithm from `sklearn` was used for clustering.
 - The optimal K was determined via the Elbow Method and Silhouette Score (with subsampling).
 - Final segmentation was performed with K = 4.
 
-### 3. **Key Visualizations**
+### 2. **Key Visualizations**
 - RFM distributions and boxplots
 - Cluster boxplots per feature
 - Heatmap of normalized cluster averages
@@ -106,9 +115,10 @@ rfm-kmeans-segmentation/
 
 ## Key Insights
 
--   Distinct customer segments were identified using RFM modeling and K-Means clustering, providing interpretable insights for business actions.
--   The project successfully applied advanced data preprocessing techniques, including outlier filtering and transformations, to prepare the data for robust analysis.
--   Visualizations confirmed the effectiveness of the clustering by illustrating clear patterns within each customer segment.
+-   Cluster 1 (High-Value Frequent Champions) represents the most strategically valuable segment — retention and loyalty efforts should be prioritised here.
+-   Cluster 2 (Long-Term Inactive) signals a significant churn risk, making it the primary target for reactivation campaigns.
+-   The log transformation applied to `Frequency` and `Monetary` was critical to achieving well-separated clusters — without it, skewness would have distorted the K-Means distance calculations.
+-   No single cluster dominates all three RFM dimensions simultaneously, confirming that volume and value are distinct behavioural axes in this dataset.
 
 ---
 
